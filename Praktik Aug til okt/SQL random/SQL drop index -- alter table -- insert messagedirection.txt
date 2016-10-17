@@ -1,0 +1,13 @@
+if exists(select * 
+          from sys.indexes 
+		  where object_id = object_id('t_Letter') and 
+		        name like 'idx_t_Letter_let_CPR')
+  drop index idx_t_Letter_let_CPR on t_Letter
+go
+
+
+alter table t_OrganisationUnit_LetterType_MessageDirection
+alter column old_Active bit not null
+
+exec rssp_InsertRoute '244471000016008', null, null, 'DIS01',null, 'fisk', 'fisk', 1, 1,'fisk', 1, 1 
+
